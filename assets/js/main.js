@@ -1,0 +1,170 @@
+(function(){
+  "use strict";
+  const select = (el, all = false) =>
+    all ? [...document.querySelectorAll(el)] : document.querySelector(el);
+
+  function on(type, el, listener, all = false){
+    (all ? select(el, true) : [select(el)]).forEach(e => {
+      if(e) e.addEventListener(type, listener);
+    });
+  }
+
+
+  on('click','.mobile-nav-toggle', () => {
+    document.body.classList.toggle('mobile-nav-active');
+    let t = select('.mobile-nav-toggle');
+    t.classList.toggle('bi-list');
+    t.classList.toggle('bi-x');
+  });
+
+  // Typed.js
+  let t = select('.typed');
+  if(t){
+    new Typed('.typed', {
+      strings: t.getAttribute('data-typed-items').split(','),
+      typeSpeed:100, backSpeed:50, backDelay:2000, loop:true
+    });
+  }
+
+  // AOS
+  window.addEventListener('load', () => {
+  AOS.init({
+    duration: 1000,
+    easing: 'ease-in-out',
+    once: true,
+    mirror: false
+  });
+  AOS.refresh(); // ← Dodaj to
+});
+
+  // Glightbox
+  GLightbox({ selector: '.portfolio-lightbox' });
+
+  // Isotope filtering
+  window.addEventListener('load', () => {
+    let container = select('.portfolio-container');
+    if(container){
+      let iso = new Isotope(container, { itemSelector: '.portfolio-item' });
+      let filters = select('#portfolio-flters li', true);
+      on('click', '#portfolio-flters li', function(e){
+        e.preventDefault();
+        filters.forEach(el => el.classList.remove('filter-active'));
+        this.classList.add('filter-active');
+        iso.arrange({ filter: this.getAttribute('data-filter') });
+      }, true);
+    }
+  });
+
+  // Highlight active nav link on scroll
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll("#navbar .nav-link, #navbar .dropdown-item");
+
+  function activateNavLink() {
+    let scrollY = window.pageYOffset;
+    sections.forEach(current => {
+      const sectionHeight = current.offsetHeight;
+      const sectionTop = current.offsetTop - 100;
+      const sectionId = current.getAttribute("id");
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${sectionId}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+    });
+  }
+
+  window.addEventListener("scroll", activateNavLink);
+  document.addEventListener("DOMContentLoaded", () => {
+  const sections = [...document.querySelectorAll("section[id]")];
+  let isScrolling = false;
+  let wheelTimeout;
+
+  function smoothScrollTo(targetY, duration = 50) {
+    const startY = window.scrollY;
+    const diff = targetY - startY;
+    let startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const percent = Math.min(progress / duration, 1);
+      window.scrollTo(0, startY + diff * easeInOutQuad(percent));
+      if (progress < duration) {
+        requestAnimationFrame(step);
+      } else {
+        isScrolling = false;
+      }
+    }
+
+    function easeInOutQuad(t) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  function getCurrentSectionIndex() {
+    const scrollY = window.scrollY + window.innerHeight / 2;
+    return sections.findIndex((section, index) => {
+      const offsetTop = section.offsetTop;
+      const next = sections[index + 1]?.offsetTop ?? Infinity;
+      return scrollY >= offsetTop && scrollY < next;
+    });
+  }
+
+  function scrollToSection(direction) {
+    if (isScrolling) return;
+    isScrolling = true;
+    const currentIndex = getCurrentSectionIndex();
+    const nextIndex = direction === "down" ? currentIndex + 1 : currentIndex - 1;
+
+    if (nextIndex >= 0 && nextIndex < sections.length) {
+      smoothScrollTo(sections[nextIndex].offsetTop);
+    } else {
+      isScrolling = false;
+    }
+  }
+
+  window.addEventListener("wheel", (e) => {
+    if (Math.abs(e.deltaY) < 30 || isScrolling) return;
+    clearTimeout(wheelTimeout);
+    scrollToSection(e.deltaY > 0 ? "down" : "up");
+    wheelTimeout = setTimeout(() => {
+      isScrolling = false;
+    }, 700);
+  }, { passive: true });
+
+  window.addEventListener("keydown", (e) => {
+    if (isScrolling) return;
+    if (["ArrowDown", "PageDown"].includes(e.key)) {
+      e.preventDefault();
+      scrollToSection("down");
+    } else if (["ArrowUp", "PageUp"].includes(e.key)) {
+      e.preventDefault();
+      scrollToSection("up");
+    }
+  });
+});
+})();
+
+const backToTop = document.querySelector('.back-to-top');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    backToTop.classList.add('active');
+  } else {
+    backToTop.classList.remove('active');
+  }
+});
+
+
+function setLanguage(lang) {
+  document.body.classList.remove("lang-pl", "lang-en");
+  document.body.classList.add("lang-" + lang);
+  document.querySelectorAll('.lang-text').forEach(el => {
+    const text = el.getAttribute(`data-lang-${lang}`);
+    if (text) el.textContent = text;
+  });
+}
