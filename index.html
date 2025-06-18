@@ -667,7 +667,7 @@ Dzięki temu doświadczeniu rozwinąłem umiejętności komunikacyjne, zarządza
         footer.classList.remove('hidden');
       }
     });
-  }, { threshold: 0.6 });
+  }, { threshold: 1.0 });
 v
   observer.observe(hero);
 });
@@ -705,16 +705,22 @@ v
    AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
   </script>
 <script>
-   document.addEventListener('DOMContentLoaded', () => {
-  const elements = document.querySelectorAll('.fade-in');
+document.addEventListener('DOMContentLoaded', () => {
+  const footer = document.getElementById('footer');
+  const hero = document.getElementById('hero');
+  if (!footer || !hero) return;
+
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+      if (entry.intersectionRatio === 1) {
+        footer.classList.add('hidden');
+      } else {
+        footer.classList.remove('hidden');
       }
     });
-  });
-  elements.forEach(el => observer.observe(el));
+  }, { threshold: 1.0 });
+
+  observer.observe(hero);
 });
   </script>
 <script>

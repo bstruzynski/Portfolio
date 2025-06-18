@@ -2,7 +2,7 @@
 
 /* Reset and base styles */
 html, body {
-  scroll-snap-type: none;
+  scroll-snap-type: y mandatory;
   scroll-behavior: auto;
   overscroll-behavior-y: contain;
   height: 100%;
@@ -164,6 +164,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .hero-container {
+  min-height: 100vh;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -174,8 +175,9 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding: 20px;
+  padding: 0;
   z-index: 1;
+  box-sizing: border-box;
 }
 
 #hero h1 {
@@ -221,8 +223,8 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   visibility: visible;
   opacity: 1;
-  right: 15px;
-  bottom: 15px;
+  right: 20px;
+  bottom: 20px;
   z-index: 99999;
   color: #fff;
   padding: 10px 15px;
@@ -286,6 +288,7 @@ section {
   margin-left: 300px;
   padding-top: 60px;
   padding-bottom: 60px;
+  scroll-snap-align: start;
   scroll-snap-stop: always;
 }
   .resume-edu {
@@ -1006,5 +1009,14 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 1400px !important;
     padding-left: 40px !important;
     padding-right: 40px !important;
+  }
+    .hero-container, .hero-container * {
+    font-size: 1rem !important;
+  }
+  .hero-container h1 {
+    font-size: 2rem !important;
+  }
+  .hero-container h2 {
+    font-size: 2.5rem !important;
   }
 }

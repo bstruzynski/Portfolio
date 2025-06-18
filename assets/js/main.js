@@ -3,55 +3,18 @@
   const select = (el, all = false) =>
     all ? [...document.querySelectorAll(el)] : document.querySelector(el);
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const mobileToggle = select('.mobile-nav-toggle');
-    const header = select('#header');
-    const navLinks = select('#navbar .nav-link, #navbar .dropdown-item', true);
-    let overlay = null;
-
-    function openSidebar() {
-      header.classList.add('mobile-active');
-      mobileToggle.classList.add('active');
-      mobileToggle.innerHTML = '<i class="bi bi-x"></i>';
-      if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.className = 'mobile-overlay';
-        document.body.appendChild(overlay);
-        overlay.addEventListener('click', closeSidebar);
-      }
-      document.body.style.overflow = 'hidden';
-    }
-    function closeSidebar() {
-      header.classList.remove('mobile-active');
-      mobileToggle.classList.remove('active');
-      mobileToggle.innerHTML = '<i class="bi bi-list"></i>';
-      if (overlay) {
-        overlay.removeEventListener('click', closeSidebar);
-        overlay.remove();
-        overlay = null;
-      }
-      document.body.style.overflow = '';
-    }
-    if (mobileToggle) {
-      mobileToggle.addEventListener('click', function () {
-        if (header.classList.contains('mobile-active')) {
-          closeSidebar();
-        } else {
-          openSidebar();
-        }
-      });
-    }
-    if (navLinks && navLinks.length) {
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          if (window.innerWidth < 992) closeSidebar();
-        });
-      });
-    }
-    // Napraw resize - zamyka menu gdy wracamy do desktop
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 992) closeSidebar();
+  function on(type, el, listener, all = false){
+    (all ? select(el, true) : [select(el)]).forEach(e => {
+      if(e) e.addEventListener(type, listener);
     });
+  }
+
+
+  on('click','.mobile-nav-toggle', () => {
+    document.body.classList.toggle('mobile-nav-active');
+    let t = select('.mobile-nav-toggle');
+    t.classList.toggle('bi-list');
+    t.classList.toggle('bi-x');
   });
 
   // Typed.js
@@ -63,21 +26,39 @@
     });
   }
 
+  // AOS
   window.addEventListener('load', () => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
-    AOS.refresh();
+  AOS.init({
+    duration: 1000,
+    easing: 'ease-in-out',
+    once: true,
+    mirror: false
   });
+  AOS.refresh(); // ← Dodaj to
+});
 
+  // Glightbox
   GLightbox({ selector: '.portfolio-lightbox' });
 
-  // podświetlanie nawigacji
+  // Isotope filtering
+  window.addEventListener('load', () => {
+    let container = select('.portfolio-container');
+    if(container){
+      let iso = new Isotope(container, { itemSelector: '.portfolio-item' });
+      let filters = select('#portfolio-flters li', true);
+      on('click', '#portfolio-flters li', function(e){
+        e.preventDefault();
+        filters.forEach(el => el.classList.remove('filter-active'));
+        this.classList.add('filter-active');
+        iso.arrange({ filter: this.getAttribute('data-filter') });
+      }, true);
+    }
+  });
+
+  // Highlight active nav link on scroll
   const sections = document.querySelectorAll("section[id]");
-  const navLinksAll = document.querySelectorAll("#navbar .nav-link, #navbar .dropdown-item");
+  const navLinks = document.querySelectorAll("#navbar .nav-link, #navbar .dropdown-item");
+
   function activateNavLink() {
     let scrollY = window.pageYOffset;
     sections.forEach(current => {
@@ -85,7 +66,7 @@
       const sectionTop = current.offsetTop - 100;
       const sectionId = current.getAttribute("id");
       if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-        navLinksAll.forEach(link => {
+        navLinks.forEach(link => {
           link.classList.remove("active");
           if (link.getAttribute("href") === `#${sectionId}`) {
             link.classList.add("active");
@@ -94,50 +75,96 @@
       }
     });
   }
+
   window.addEventListener("scroll", activateNavLink);
+  document.addEventListener("DOMContentLoaded", () => {
+  const sections = [...document.querySelectorAll("section[id]")];
+  let isScrolling = false;
+  let wheelTimeout;
 
-  // Back to top
-  const backToTop = document.querySelector('.back-to-top');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      backToTop.classList.add('active');
-    } else {
-      backToTop.classList.remove('active');
+  function smoothScrollTo(targetY, duration = 50) {
+    const startY = window.scrollY;
+    const diff = targetY - startY;
+    let startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const percent = Math.min(progress / duration, 1);
+      window.scrollTo(0, startY + diff * easeInOutQuad(percent));
+      if (progress < duration) {
+        requestAnimationFrame(step);
+      } else {
+        isScrolling = false;
+      }
     }
-  });
 
-  // Language switcher
-  window.setLanguage = function(lang) {
-    document.body.classList.remove("lang-pl", "lang-en");
-    document.body.classList.add("lang-" + lang);
-    document.querySelectorAll('.lang-text').forEach(el => {
-      const text = el.getAttribute(`data-lang-${lang}`);
-      if (text) el.textContent = text;
+    function easeInOutQuad(t) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  function getCurrentSectionIndex() {
+    const scrollY = window.scrollY + window.innerHeight / 2;
+    return sections.findIndex((section, index) => {
+      const offsetTop = section.offsetTop;
+      const next = sections[index + 1]?.offsetTop ?? Infinity;
+      return scrollY >= offsetTop && scrollY < next;
     });
   }
-})();
 
-document.addEventListener('DOMContentLoaded', function() {
-  function toggleFooterOnHero() {
-    const hero = document.querySelector('#hero');
-    const footer = document.getElementById('footer');
-    if (!hero || !footer) return;
+  function scrollToSection(direction) {
+    if (isScrolling) return;
+    isScrolling = true;
+    const currentIndex = getCurrentSectionIndex();
+    const nextIndex = direction === "down" ? currentIndex + 1 : currentIndex - 1;
 
-    const heroRect = hero.getBoundingClientRect();
-    // Jeśli hero jest w co najmniej 50% widoczny w viewport, chowamy stopkę
-    const threshold = 0.5;
-    const visible =
-      heroRect.top < window.innerHeight * (1 - threshold) &&
-      heroRect.bottom > window.innerHeight * threshold;
-
-    if (visible) {
-      footer.classList.add('hidden');
+    if (nextIndex >= 0 && nextIndex < sections.length) {
+      smoothScrollTo(sections[nextIndex].offsetTop);
     } else {
-      footer.classList.remove('hidden');
+      isScrolling = false;
     }
   }
 
-  window.addEventListener('scroll', toggleFooterOnHero);
-  window.addEventListener('resize', toggleFooterOnHero);
-  setTimeout(toggleFooterOnHero, 200);
+  window.addEventListener("wheel", (e) => {
+    if (Math.abs(e.deltaY) < 30 || isScrolling) return;
+    clearTimeout(wheelTimeout);
+    scrollToSection(e.deltaY > 0 ? "down" : "up");
+    wheelTimeout = setTimeout(() => {
+      isScrolling = false;
+    }, 700);
+  }, { passive: true });
+
+  window.addEventListener("keydown", (e) => {
+    if (isScrolling) return;
+    if (["ArrowDown", "PageDown"].includes(e.key)) {
+      e.preventDefault();
+      scrollToSection("down");
+    } else if (["ArrowUp", "PageUp"].includes(e.key)) {
+      e.preventDefault();
+      scrollToSection("up");
+    }
+  });
 });
+})();
+
+const backToTop = document.querySelector('.back-to-top');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    backToTop.classList.add('active');
+  } else {
+    backToTop.classList.remove('active');
+  }
+});
+
+
+function setLanguage(lang) {
+  document.body.classList.remove("lang-pl", "lang-en");
+  document.body.classList.add("lang-" + lang);
+  document.querySelectorAll('.lang-text').forEach(el => {
+    const text = el.getAttribute(`data-lang-${lang}`);
+    if (text) el.textContent = text;
+  });
+}
