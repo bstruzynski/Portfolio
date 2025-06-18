@@ -60,13 +60,20 @@ function closeSidebar() {
     });
   });
   // Typed.js
-  let t = select('.typed');
-  if(t){
-    new Typed('.typed', {
-      strings: t.getAttribute('data-typed-items').split(','),
-      typeSpeed:100, backSpeed:50, backDelay:2000, loop:true
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.typed').forEach(function(el) {
+    var typed_items = el.getAttribute('data-typed-items');
+    if (!typed_items) return;
+    typed_items = typed_items.split(',').map(item => item.trim());
+    new Typed(el, {
+      strings: typed_items,
+      typeSpeed: 40,
+      backSpeed: 40,
+      backDelay: 1200,
+      loop: true
     });
-  }
+  });
+});
 
   // AOS
   window.addEventListener('load', () => {
@@ -202,11 +209,3 @@ window.addEventListener('scroll', () => {
 });
 
 
-function setLanguage(lang) {
-  document.body.classList.remove("lang-pl", "lang-en");
-  document.body.classList.add("lang-" + lang);
-  document.querySelectorAll('.lang-text').forEach(el => {
-    const text = el.getAttribute(`data-lang-${lang}`);
-    if (text) el.textContent = text;
-  });
-}

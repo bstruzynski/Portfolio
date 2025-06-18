@@ -12,6 +12,7 @@ html, body {
   background: #f7f8fa;
   margin: 0;
   padding: 0;
+  font-size: 16px;
 }
 
 .facebook i {
@@ -43,6 +44,14 @@ html, body {
 .contact form {
   color: #f0f0f0;
 }
+.section-title h2 {
+  display: inline-block;
+  position: relative;
+  font-size: 26px;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #149ddd;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
@@ -58,6 +67,31 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
 }
 
+.language-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+.language-switch .lang-btn {
+  color: #fff;
+  opacity: 0.75;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0;
+  transition: opacity 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.language-switch .lang-btn.active,
+.language-switch .lang-btn:hover {
+  opacity: 1;
+  color: #00aaff;
+  text-decoration: underline;
+}
 .section-title,
 .section-content,
 .portfolio,
@@ -209,7 +243,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 12px;
   z-index: 9999;
   transition: opacity 0.4s ease, transform 0.4s ease;
-  opacity: 0.9;
+  opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
@@ -356,17 +390,7 @@ body {
   border-radius: 10px;
 }
 
-.section-title h2,
-.section-title p,
-.about .content,
-.resume .resume-item,
-.contact .info,
-.contact form,
-ul, p, li {
-  color: #ffffff;
-  font-size: 16px;
-  line-height: 1.6;
-}
+
 
 /* Nagłówki */
 h1, h2, h3, h4, h5, h6 {
@@ -477,19 +501,24 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 991px) {
   #main,
   section {
-    margin-left: 0 !important;
+  margin-left: 0 !important;
+  }
+  html, body, main { 
+  scroll-snap-type: none !important; 
+  }
+  section { 
+  scroll-snap-align: none !important; 
   }
 }
-
-@media (max-width: 767px) {
-  html {
-    scroll-snap-type: none !important;
-  }
-
-  section {
-    scroll-snap-align: none !important;
-  }
+.profile .social-links {
+  margin-bottom: 4px !important;
+  gap: 14px !important;
 }
+
+.profile .language-switch {
+  margin-top: 2px !important;
+}
+
 /* Hamburger & Mobile Sidebar */
 .mobile-nav-toggle {
   display: flex !important;
@@ -597,6 +626,9 @@ body.menu-open #hero {
     margin-left: 0 !important;
     width: 100% !important;
   }
+  .back-to-top {
+  right: 15px;
+  bottom: 15px;
 }
 @media (max-width: 767px) {
   .about .container-fluid .row {
@@ -1026,6 +1058,7 @@ body.menu-open #hero {
   text-align: left !important;
   }
 }
+}
     @media (max-width: 767px) {
   .about .col-lg-4.about-left,
   .about-photo-info {
@@ -1061,8 +1094,8 @@ body.menu-open #hero {
   }
 }
 @media (min-width: 1921px) {
-  html {
-    font-size: calc(16px + 0.5vw); /* Czcionka rośnie z szerokością ekranu */
+  html *{
+  font-size: calc(1rem + 0.2vw) !important; 
   }
   .about, .resume, .section, .skills, .container, .row {
     padding-top: calc(40px + 1vw) !important;
@@ -1074,10 +1107,6 @@ body.menu-open #hero {
   h3, h4 {
     font-size: calc(0.4rem + 0.5vw) !important;
   }
-    body, p, li, span, a, .resume, .skills, .about, .section {
-    font-size: 0.7rem !important;  /* dziedziczy z html */
-    line-height: 1.6 !important;
-  }
     .container, .section, .about, .skills, .resume {
     padding-left: 90px !important;
     padding-right: 90px !important;
@@ -1087,7 +1116,7 @@ body.menu-open #hero {
   #footer,
   #footer *,
   #footer *:not(a) {
-    font-size: 0.6rem !important;
+    font-size: 1rem !important;
     line-height: 1.5 !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
@@ -1096,7 +1125,7 @@ body.menu-open #hero {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
     min-height: unset !important;
-    opacity: 0.9;
+    opacity: 1;
   }
   #skills .container,
   #resume .container {
@@ -1104,13 +1133,10 @@ body.menu-open #hero {
     padding-left: 40px !important;
     padding-right: 40px !important;
   }
-    .hero-container, .hero-container * {
-    font-size: 1rem !important;
-  }
   .hero-container h1 {
-    font-size: 2rem !important;
+    font-size: 4rem !important;
   }
-  .hero-container h2 {
+  .hero-container p, .typed, .typed-cursor {
     font-size: 2.5rem !important;
   }
 }

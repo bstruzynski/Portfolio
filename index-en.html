@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bartłomiej Strużyński – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway:300,400,500,600,700" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body style="color: #f0f0f0; background-color: #181828;">
+<button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Menu">
+  <span class="burger-bar"></span>
+  <span class="burger-bar"></span>
+  <span class="burger-bar"></span>
+</button>
+<header class="fixed-sidebar" id="header">
+  <div class="d-flex flex-column">
+    <div class="profile">
+      <img alt="Profile" class="img-fluid rounded-circle" src="assets/img/profile-img.png"/>
+      <h1 class="text-light">Bartłomiej Strużyński</h1>
+      <div class="social-links mt-1 mb-1 text-center" style="display: flex; justify-content: center; gap: 15px;">
+        <a class="facebook social-link" href="https://www.facebook.com/bartek.struzynski"><i class="bx bxl-facebook"></i></a>
+        <a class="instagram social-link" href="https://www.instagram.com/damiansmietana/"><i class="bx bxl-instagram"></i></a>
+        <a class="linkedin social-link" href="https://www.linkedin.com/in/bart%C5%82omiej-stru%C5%BCy%C5%84ski-7a76931a3/"><i class="bx bxl-linkedin"></i></a>
+      </div>
+      <div class="language-switch justify-content-center mt-2" style="gap: 6px; font-size: 1rem;">
+  <a class="lang-btn text-white fw-semibold px-1" href="index.html" style="opacity: 0.7;">PL</a>
+  <span class="text-white" style="opacity: 0.5;"> - </span>
+  <a class="lang-btn text-white fw-semibold px-1" href="index-en.html" style="opacity: 0.7;">EN</a>
+</div>
+    </div>
+    <nav class="nav-menu navbar" id="navbar" style="height: 100%; display: flex; flex-direction: column;">
+      <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero"><i class="bi bi-house-door"></i>Home</a></li>
+          <li><a class="nav-link scrollto" href="#about"><i class="bi bi-person"></i>About me</a></li>
+          <li><a class="nav-link scrollto" href="#skills"><i class="bi bi-tools"></i>Skills</a></li>
+          <li><a class="nav-link scrollto" href="#resume"><i class="bi bi-file-earmark-text"></i>Experience</a></li>
+        </ul>
+        <ul class="submenu" style="list-style: none; padding-left: 15px;">
+          <li>
+            <a class="dropdown-item scrollto" href="#outsourcing24">Outsourcing24</a>
+          </li>
+          <li>
+            <a class="dropdown-item scrollto" href="#absysco">Absysco</a>
+          </li>
+          <li>
+            <a class="dropdown-item scrollto" href="#boyar">Boyar</a>
+          </li>
+        </ul>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+<section class="d-flex align-items-center justify-content-center" id="hero" style="scroll-snap-align: start; margin-left: 300px; width: calc(100% - 300px); padding: 0; background: url('assets/img/background.png') center center/cover no-repeat">
+  <div class="hero-container" style="width: 100%; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+    <h1>Bartłomiej Strużyński</h1>
+    <p>
+      I am<br>
+      <span class="typed" data-typed-items="IT Support Specialist,Helpdesk Technician,Your trusted expert">&nbsp;
+      </span>
+    </p>
+  </div>
+</section>
+<main id="main">
+<!-- ======= About Section ======= -->
+<section class="about" id="about" style="display: flex; align-items: center; background-color: #242435; padding-top: 60px; padding-bottom: 30px">
+  <div class="container-fluid d-flex flex-column h-100 px-5">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-4 about-photo-info">
+        <img alt="Profile Image" class="img-fluid mb-3" src="assets/img/about-img.png" style="width: 320px; height: 320px; object-fit: cover; border-radius: 0; display: block; margin: 0 0 20px 0;"/>
+        <div class="about-data">
+          <ul class="list-unstyled text-start">
+            <li>
+              <strong><i class="bi bi-geo-alt"></i> City:</strong> Wiązów
+            </li>
+            <li>
+              <strong><i class="bi bi-calendar3"></i> Birthday:</strong> 10.11.1995
+            </li>
+            <li>
+              <strong><i class="bi bi-person"></i> Age:</strong> 29
+            </li>
+            <li>
+              <strong><i class="bi bi-mortarboard"></i> Degree:</strong> Engineer
+            </li>
+            <li>
+              <strong><i class="bi bi-phone"></i> Phone:</strong> <span id="contact-phone">691 566 961</span>
+            </li>
+            <li>
+              <strong><i class="bi bi-envelope"></i> E-mail:</strong> <span id="contact-email">struzynski.bartek@gmail.com</span>
+            </li>
+            <li>
+              <strong><i class="bi bi-translate"></i> Language:</strong> English (intermediate)
+            </li>
+          </ul>
+          <div class="mt-4" data-aos="fade-up" data-aos-delay="200">
+            <a class="btn btn-primary"
+               href="assets/CV_EN_Bartek_Struzynski.pdf" target="_blank">
+               See my CV
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8" style="padding-left: 24px;">
+        <div class="section-title resume-edu" data-aos="fade-right">
+          <div class="edu-inner o-mnie">
+            <h2>About me</h2>
+            <p>
+              I am an IT specialist with several years of experience in technical support, helpdesk, and system integration. Every day, I support users, ensuring not only quick and effective problem-solving, but also clear communication and an understanding of business needs.
+            </p>
+            <p>
+              By nature, I am inquisitive and organized—I don't settle for "temporary fixes", but strive to address root causes. I can manage tasks independently, but I also value teamwork and knowledge sharing. I adapt well to both routine and crisis situations where a quick response is crucial.
+            </p>
+            <p>
+              I believe that IT is, above all, about people—technology is a tool, but its real value is revealed when it solves real problems. This is the approach I take to every case reported.
+            </p>
+          </div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100" style="padding-top: 30px;">
+          <h5 class="text-info">Professional values</h5>
+          <ul>
+            <li>I always look for the best solution, not the fastest one</li>
+            <li>I thoroughly document my actions and care about quality</li>
+            <li>I help people understand technology in simple terms</li>
+            <li>I care about transparency and clear communication with users</li>
+            <li>I constantly develop my skills, learning new tools and technologies</li>
+          </ul>
+          <div data-aos="fade-up" data-aos-delay="200">
+            <h5 class="text-info">Technical skills</h5>
+            <p>
+              Knowledge of Windows systems, Active Directory, Hyper-V, and Microsoft 365. Configuration of network and end devices, basics of SQL, EDI, and infrastructure monitoring. Ability to work both in a team and independently.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= Skills Section ======= -->
+<section class="skills section-bg" id="skills" style="background-color: #2a2a3b; padding-top: 30px; padding-bottom: 30px">
+  <div class="container px-5 py-5">
+    <div class="section-title">
+      <h2>Skills</h2>
+      <p>
+        Below you can find a summary of my technical, tool, and soft skills acquired during my professional career.
+      </p>
+    </div>
+    <div class="row skills-content" data-aos="fade-up">
+      <div class="col-lg-6">
+        <h4 class="mb-2">Technical skills</h4>
+        <ul>
+          <li>Windows Server, Active Directory, RDS</li>
+          <li>Hyper-V, virtual machines</li>
+          <li>ServiceDesk Plus MSP, backup, and monitoring</li>
+          <li>EDI integration, error and test handling</li>
+          <li>Working with ERP systems and databases</li>
+          <li>E-commerce platforms: Allegro, online stores</li>
+          <li>Warehouse and logistics management</li>
+          <li>Knowledge of ITSM (IT Service Management) concepts</li>
+        </ul>
+        <h4 class="mt-4 mb-2">Languages and communication</h4>
+        <ul>
+          <li>English – B2 (meetings, technical communication)</li>
+          <li>Non-technical customer service and partner contact</li>
+          <li>Cooperation with administration and external departments</li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <h4 class="mb-2">Tools and software</h4>
+        <ul>
+          <li>Active Directory, Hyper-V Manager, RDP</li>
+          <li>ServiceDesk Plus MSP, system monitoring</li>
+          <li>Office 365, Excel, data processing</li>
+          <li>Remote support, Teamviewer, Anydesk, Dameware</li>
+          <li>ERP systems, EDI tools</li>
+        </ul>
+        <h4 class="mt-4 mb-2">Soft skills</h4>
+        <ul>
+          <li>Working under pressure and in crisis situations</li>
+          <li>Independence, good work organization</li>
+          <li>High accuracy and goal orientation</li>
+          <li>Ability to adapt quickly and work in a team</li>
+        </ul>
+      </div>
+    </div>
+    <div class="skill-icons" data-aos="fade-up" data-aos-delay="200">
+      <span class="skill-icon"><i class="fas fa-network-wired" style="margin-right: 6px;"></i>Active Directory</span>
+      <span class="skill-icon"><i class="fas fa-server" style="margin-right: 6px;"></i>Hyper-V</span>
+      <span class="skill-icon"><i class="fas fa-exchange-alt" style="margin-right: 6px;"></i>EDI</span>
+      <span class="skill-icon"><i class="fas fa-database" style="margin-right: 6px;"></i>ERP</span>
+      <span class="skill-icon"><i class="fas fa-desktop" style="margin-right: 6px;"></i>RDS</span>
+      <span class="skill-icon"><i class="fa-brands fa-microsoft" style="margin-right: 6px;"></i>Office 365</span>
+      <span class="skill-icon"><i class="fa-brands fa-windows" style="margin-right: 6px;"></i>Windows Server</span>
+      <span class="skill-icon"><i class="fas fa-tools" style="margin-right: 6px;"></i>ServiceDesk Plus</span>
+    </div>
+  </div>
+</section>
+<!-- ======= Resume Section ======= -->
+<section class="resume" id="resume" style="background-color: #242435;padding-top: 30px; padding-bottom: 30px">
+  <div class="container px-5 py-5">
+    <div class="section-title" data-aos="fade-right">
+      <h2>Experience</h2>
+      <p>
+        My professional experience and technical education in IT.
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 resume-edu">
+        <div class="edu-inner">
+          <h3 class="resume-title">Education</h3>
+          <div class="resume-item">
+            <h4>Computer Science Engineer – Network Management</h4>
+            <h5>10.2015 – 04.2020</h5>
+            <p><em>Prof. T. Kotarbiński University of Information Technology and Management, Olsztyn</em></p>
+          </div>
+          <div class="resume-item">
+            <h4>IT Technician</h4>
+            <h5>09.2011 – 05.2015</h5>
+            <p><em>Secondary School No. 2, Oława</em></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 resume-edu">
+        <div class="edu-inner">
+          <h3 class="resume-title">Work Experience</h3>
+          <div class="resume-item">
+            <h4>
+              Outsourcing24
+              <span class="badge bg-info text-dark ms-2">Helpdesk</span>
+            </h4>
+            <h5>12.2022 – 06.2025</h5>
+            <p>
+              Direct support for end users, configuration of Windows Server, Active Directory, and RDS environments. Troubleshooting hardware issues and documenting actions in ServiceDesk Plus MSP.
+            </p>
+          </div>
+          <div class="resume-item">
+            <h4>
+              Absysco
+              <span class="badge bg-secondary ms-2">Integration</span>
+            </h4>
+            <h5>11.2019 – 12.2022</h5>
+            <p>
+              Supporting clients in Electronic Data Interchange (EDI), integration with ERP systems, error analysis, cooperation with technical teams and clients.
+            </p>
+          </div>
+          <div class="resume-item">
+            <h4>
+              Boyar
+              <span class="badge bg-success ms-2">eCommerce</span>
+            </h4>
+            <h5>01.2016 – 08.2019</h5>
+            <p>
+              Online sales handling, administration of Allegro platform and online store, creating offers and organizing shipments. Customer contact and operational activities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= Outsourcing24 Section ======= -->
+<section class="resume" id="outsourcing24" style="background-color: #2f2f3f;padding-top: 30px; padding-bottom: 30px">
+  <div class="container px-5 py-5">
+    <div class="section-title" data-aos="fade-right">
+      <h2>Outsourcing24</h2>
+      <p class="job-description" data-aos="fade-up" data-aos-delay="100">
+        At Outsourcing24, I was responsible for comprehensive support for end users and maintenance of IT infrastructure in a multi-branch environment. My tasks included managing environments based on Windows Server, Active Directory, Hyper-V, and RDS, as well as solving hardware and software problems—both locally and remotely.
+        <br><br>
+        In September 2024, due to a flood, I took an active part in the emergency relocation of the server room to another branch, cooperating with administrative support from Warsaw. Thanks to a quick response and efficient logistics, system continuity was ensured and operational downtime minimized.
+        <br><br>
+        In the following months, I also performed migration of the warehouse application and the database serving the high-bay rack to a new server, which improved the efficiency and stability of a key company system.
+        <br><br>
+        Additionally:
+        <ul>
+          <li>I administered user accounts in Active Directory and configured security policies,</li>
+          <li>I was responsible for configuring remote environments (RDS), network printers, and end devices,</li>
+          <li>I supported backup, monitoring, and documentation processes in ServiceDesk Plus MSP,</li>
+          <li>I communicated with non-technical users and external partners.</li>
+        </ul>
+        This position developed my skills in crisis situations, teamwork, and responsibility for IT infrastructure critical to company operations.
+      </p>
+    </div>
+    <div>
+      <h4>Junior IT Specialist</h4>
+      <p>
+        In this role, I gained practical experience in direct support for end users in office environments. Working both locally and remotely, I diagnosed and solved hardware and software problems. I managed environments based on Windows Server, Hyper-V, and Active Directory, and configured RDS connections. I was also responsible for office infrastructure, end devices, and documenting activities in ServiceDesk Plus MSP.
+        <br><br>
+        Thanks to this job, I developed skills in effective communication with non-technical users, working under time pressure, and making independent decisions. I bring practical knowledge of IT infrastructure operations in larger organizations and experience in comprehensive technical problem-solving to a new company.
+      </p>
+    </div>
+  </div>
+</section>
+<!-- ======= Absysco Section ======= -->
+<section class="resume" id="absysco" style="background-color: #2a2a3b;padding-top: 30px; padding-bottom: 30px">
+  <div class="container px-5 py-5">
+    <div class="section-title" data-aos="fade-right">
+      <h2>Absysco</h2>
+      <p class="job-description" data-aos="fade-up" data-aos-delay="100">
+        At Absysco, I dealt with the integration of IT systems based on EDI (Electronic Data Interchange) technology, supporting both local and international clients in their daily business communication with trading partners.
+        <br><br>
+        During my employment, I worked with companies such as Forum Rondo, Danone, Agrosimex, and took part in the implementation of the client Kompania Piwowarska, which is part of the global Asahi Breweries group. It was a highly complex project requiring an understanding of logistics processes and the standardization of EDI documents between many partners. I had the opportunity to participate in meetings in English and also to lead one as the person responsible for the technical part of the integration.
+        <br><br>
+        My responsibilities included, among others:
+        <ul>
+          <li>Error analysis in EDI communication and configuration of correct data transmission paths,</li>
+          <li>Working with clients' ERP systems and testing data flow between platforms,</li>
+          <li>Creating technical documentation and message mapping,</li>
+          <li>Supporting external clients (by email and phone) and communicating with trading partners.</li>
+        </ul>
+        Thanks to this job, I gained practical experience in an international environment and developed project management and effective interdepartmental communication skills.
+      </p>
+    </div>
+    <div>
+      <h4>Junior EDI Specialist (Electronic Data Interchange)</h4>
+      <p>
+        As a junior EDI specialist, I was responsible for technical support of electronic data interchange systems between ERP systems and business partners. My job was to analyze logs, identify errors in data processing, and implement new integrations for clients. I closely collaborated with IT teams, implementers, and end users.
+        <br><br>
+        This experience taught me accuracy, an analytical approach to problem-solving, and effective interdepartmental cooperation. I bring knowledge of integration systems and databases, as well as the ability to work with technical documentation and complex IT processes, to a new team.
+      </p>
+    </div>
+  </div>
+</section>
+<!-- ======= Boyar Section ======= -->
+<section class="resume" id="boyar" style="background-color: #242435;padding-top: 30px; padding-bottom: 30px">
+  <div class="container px-5 py-5">
+    <div class="section-title" data-aos="fade-right">
+      <h2>Boyar</h2>
+      <p class="job-description" data-aos="fade-up" data-aos-delay="100">
+        At Boyar, I worked at the intersection of online sales, customer service, and logistics. The brand ran both an online store specializing in shoes and accessories and a network of stationary stores in Poland's largest cities.
+        <br><br>
+        I was responsible for handling the main shipping warehouse, which fulfilled orders from the e-commerce channel. My duties included picking and packing shipments, inventory control, handling returns, and cooperating with courier companies. In addition to operational work, I was involved in customer service through sales platforms, updating product listings, and post-sale contact.
+        <br><br>
+        One of the key projects I participated in was cooperation with the Vans brand—I was responsible for preparing and managing the sales offer for Vans shoes and backpacks in both the online store and auction channels (including Allegro).
+        <br><br>
+        My daily responsibilities included, among others:
+        <ul>
+          <li>Preparing and processing online orders,</li>
+          <li>Entering and updating products in the sales system,</li>
+          <li>Customer service and managing complaints,</li>
+          <li>Warehouse organization and delivery control.</li>
+        </ul>
+        Working at Boyar gave me practical experience in e-commerce and taught me accuracy, good work organization, and effective customer communication.
+      </p>
+    </div>
+    <div>
+      <h4>Online Salesperson / E-commerce Administrator</h4>
+      <p>
+        At Boyar, I handled online sales as well as the administration of the online store and Allegro account. I was responsible for the entire sales process—from creating offers and contacting clients to order fulfillment and logistics support. This job required independence, good organization, and flexibility in multitasking.
+        <br><br>
+        Thanks to this experience, I developed communication and time management skills as well as an understanding of customer needs. In a new company, I can use these competencies in teamwork, user contact, and improving daily processes.
+      </p>
+    </div>
+  </div>
+</section>
+<!-- ======= Footer ======= -->
+<footer id="footer" style="background: #181828; color: #eee; text-align: center; padding: 20px 0 10px 0;">
+  <div class="container">
+    <p style="margin: 0 0 4px;">
+      Interested? 
+      <a class="text-info text-decoration-underline" href="#about" id="contact-link" style="cursor: pointer;">
+        Contact me
+      </a>
+    </p>
+    <p style="margin: 0;">© 2025 Bartłomiej Strużyński</p>
+  </div>
+  <a href="#hero" class="back-to-top">
+<i class="ri-arrow-up-line"></i>
+</a>
+</footer>
+<div id="preloader"></div>
+<!-- ======= JS (leave as is, at end of file) ======= -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true
+  });
+</script>
+<script>
+document.getElementById('contact-link').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+  setTimeout(function() {
+    const phone = document.getElementById('contact-phone');
+    const email = document.getElementById('contact-email');
+    phone.classList.add('highlighted');
+    email.classList.add('highlighted');
+    phone.classList.remove('unhighlight');
+    email.classList.remove('unhighlight');
+    setTimeout(function() {
+      phone.classList.remove('highlighted');
+      email.classList.remove('highlighted');
+      phone.classList.add('unhighlight');
+      email.classList.add('unhighlight');
+      // Po zejściu efektu (np. po 1s) wyczyść unhighlight:
+      setTimeout(() => {
+        phone.classList.remove('unhighlight');
+        email.classList.remove('unhighlight');
+      }, 700);
+    }, 1500);
+  }, 600);
+});
+</script>
+<style>
+  .highlighted {
+    background: #0099ff;
+    color: #fff !important;
+    transition: background 0.7s, color 0.7s;
+  }
+  .unhighlight {
+  background: transparent !important;
+  color: #f0f0f0 !important;
+  transition: background 0.7s, color 0.7s;
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const footer = document.getElementById('footer');
+  const hero = document.getElementById('hero');
+  if (!footer || !hero) return;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio === 1) {
+        footer.classList.add('hidden');
+      } else {
+        footer.classList.remove('hidden');
+      }
+    });
+  }, { threshold: 1.0 });
+  observer.observe(hero);
+});
+  </script>
+</main>
+</body>
+</html>
