@@ -4,7 +4,6 @@
 <head>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>
    Portfolio - Bartłomiej Strużyński
   </title>
@@ -38,11 +37,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 </head>
 <body class="lang-pl" style="color: #f0f0f0; background-color: #181828;">
-<div id="preloader">
-</div>
 <!-- Mobile nav toggle button -->
-<i class="bi bi-list mobile-nav-toggle d-xl-none">
-</i>
+<button class="mobile-nav-toggle d-xl-none" aria-label="Otwórz menu">
+  <i class="bi bi-list"></i>
+</button>
 <!-- ======= Header ======= -->
 <header class="fixed-sidebar" id="header">
 <div class="d-flex flex-column">
@@ -94,7 +92,7 @@
 </header>
 <!-- ======= Hero Section ======= -->
 <section class="d-flex align-items-center justify-content-center" id="hero" style="scroll-snap-align: start; margin-left: 300px; width: calc(100% - 300px); padding: 0; background: url('assets/img/background.png') center center/cover no-repeat">
-<div class="hero-container" style="max-width: 960px; width: 100%; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+<div class="hero-container" style="width: 100%; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
 <h1>
      Bartłomiej Strużyński
     </h1>
@@ -107,12 +105,13 @@
 </section>
 <main id="main">
 <!-- ======= About Section ======= -->
-<section class="about" id="about" style="display: flex; align-items: center; background-color: #2a2a3b; padding-top: 60px; padding-bottom: 30px">
+<section class="about" id="about" style="display: flex; align-items: center; background-color: #242435; padding-top: 60px; padding-bottom: 30px">
 <div class="container-fluid d-flex flex-column h-100 px-5">
 <div class="row g-5 align-items-start">
-<div class="col-lg-4 text-center" style="border-right: 1px solid rgba(255,255,255,0.15); padding: 0 30px 0 90px;">
+<div class="col-lg-4 about-photo-info">
 <img alt="Profile Image" class="img-fluid mb-3" src="assets/img/about-img.png" style="width: 320px; height: 320px; object-fit: cover; border-radius: 0; display: block; margin: 0 0 20px 0;"/>
-<ul class="list-unstyled text-start">
+<div class="about-data">
+<ul class="list-unstyled text-start ">
 <li>
 <strong>
 <i class="bi bi-geo-alt">
@@ -175,13 +174,15 @@
         </li>
 </ul>
 <div class="mt-4" data-aos="fade-up" data-aos-delay="200">
-<a class="btn btn-primary" href="assets/CV_Bartek_Struzynski.pdf" target="_blank">
+<a class="btn btn-primary" href="assets/CV_PL_Bartek_Struzynski.pdf" target="_blank">
         Zobacz moje CV
        </a>
 </div>
 </div>
-<div class="col-lg-8" style="padding-left: 30px;">
-<div class="section-title" data-aos="fade-right">
+</div>
+<div class="col-lg-8" style="padding-left: 24px;">
+<div class="section-title resume-edu" data-aos="fade-right">
+<div class="edu-inner o-mnie">
 <h2><span class="lang-pl">O mnie</span></h2>
 <p>
   Jestem specjalistą IT z kilkuletnim doświadczeniem w obszarze wsparcia technicznego, helpdesku oraz integracji systemów. Na co dzień wspieram użytkowników, dbając nie tylko o szybkie i skuteczne rozwiązywanie problemów, ale także o jasną komunikację i zrozumienie potrzeb biznesowych.
@@ -193,7 +194,8 @@
   Wierzę, że IT to przede wszystkim ludzie – technologia jest narzędziem, ale jej prawdziwa wartość ujawnia się wtedy, gdy rozwiązuje realne problemy. Z takim nastawieniem podchodzę do każdej zgłoszonej sprawy.
  </p>
 </div>
-<div data-aos="fade-up" data-aos-delay="100">
+</div>
+<div data-aos="fade-up" data-aos-delay="100" style="padding-top: 30px;">
 <h5 class="text-info">
          Wartości zawodowe
         </h5>
@@ -214,7 +216,6 @@
           Stale rozwijam swoje kompetencje, ucząc się nowych narzędzi i technologii
         </li>
 </ul>
-</div>
 <div data-aos="fade-up" data-aos-delay="200">
 <h5 class="text-info">
          Kompetencje techniczne
@@ -226,9 +227,10 @@
 </div>
 </div>
 </div>
+</div>
 </section>
 <section class="skills section-bg" id="skills" style="background-color: #2a2a3b; padding-top: 30px; padding-bottom: 30px">
-<div class="container">
+<div class="container px-5 py-5">
 <div class="section-title">
 <h2>
        Umiejętności
@@ -379,7 +381,8 @@
       </p>
 </div>
 <div class="row">
-<div class="col-lg-6" style="border-right: 1px solid rgba(255,255,255,0.15); padding-right: 30px;">
+<div class="col-lg-6 resume-edu">
+        <div class="edu-inner">
 <h3 class="resume-title">
         Wykształcenie
        </h3>
@@ -410,7 +413,9 @@
 </p>
 </div>
 </div>
-<div class="col-lg-6" style="padding-left: 30px;">
+</div>
+<div class="col-lg-6 resume-edu">
+        <div class="edu-inner">
 <h3 class="resume-title">
         Doświadczenie zawodowe
        </h3>
@@ -455,6 +460,7 @@
 <p>
          Obsługa sprzedaży internetowej, administracja platformą Allegro i sklepu online, tworzenie ofert i organizacja wysyłek. Kontakt z klientami i prowadzenie działań operacyjnych.
         </p>
+</div>
 </div>
 </div>
 </div>
@@ -662,7 +668,7 @@ Dzięki temu doświadczeniu rozwinąłem umiejętności komunikacyjne, zarządza
       }
     });
   }, { threshold: 0.6 });
-
+v
   observer.observe(hero);
 });
   </script>
@@ -675,7 +681,7 @@ Dzięki temu doświadczeniu rozwinąłem umiejętności komunikacyjne, zarządza
         Zapraszam do kontaktu
       </a>.
     </p>
-<p style="margin: 0;">© 2025 Bartłomiej Strużyński (work in progress)</p>
+<p style="margin: 0;">© 2025 Bartłomiej Strużyński</p>
 </div>
 <a class="back-to-top" href="#hero">
 <i class="ri-arrow-up-line">
@@ -732,6 +738,6 @@ Dzięki temu doświadczeniu rozwinąłem umiejętności komunikacyjne, zarządza
       });
     }, 2000);
   });
-</script>
+</script>    
 </body>
 </html>
