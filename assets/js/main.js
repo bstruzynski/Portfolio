@@ -61,18 +61,21 @@ function closeSidebar() {
   });
   // Typed.js
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.typed').forEach(function(el) {
-    var typed_items = el.getAttribute('data-typed-items');
-    if (!typed_items) return;
-    typed_items = typed_items.split(',').map(item => item.trim());
-    new Typed(el, {
-      strings: typed_items,
-      typeSpeed: 40,
-      backSpeed: 40,
-      backDelay: 1200,
-      loop: true
+  setTimeout(() => {
+    document.querySelectorAll('.typed').forEach(function(el) {
+      el.classList.add('visible-typed'); // fade-in
+      var typed_items = el.getAttribute('data-typed-items');
+      if (!typed_items) return;
+      typed_items = typed_items.split(',').map(item => item.trim());
+      new Typed(el, {
+        strings: typed_items,
+        typeSpeed: 50,
+        backSpeed: 50,
+        backDelay: 1200,
+        loop: true
+      });
     });
-  });
+  }, 2500); // 3 sekundy opóźnienia
 });
 
   // AOS
@@ -198,7 +201,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 })();
-
 const backToTop = document.querySelector('.back-to-top');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 100) {
@@ -207,5 +209,12 @@ window.addEventListener('scroll', () => {
     backToTop.classList.remove('active');
   }
 });
-
-
+  document.addEventListener('DOMContentLoaded', function() {
+    const heroH1 = document.getElementById('hero-title');
+    if (heroH1) {
+      setTimeout(() => {
+        heroH1.classList.add('hero-h1-animate');
+        heroH1.classList.remove('hero-h1-void');
+      }, 200);
+    }
+  });
