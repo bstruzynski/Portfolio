@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         loop: true
       });
     });
-  }, 2500); // 3 sekundy opóźnienia
+  }, 1500); // 3 sekundy opóźnienia
 });
 
   // AOS
