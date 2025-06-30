@@ -151,8 +151,6 @@ function smoothScrollTo(targetY, duration = 800) {
       isScrolling = false;
     }
   }
-
-  // Nowy easing:
   function easeInOutCubic(t) {
     return t < 0.5
       ? 4 * t * t * t
