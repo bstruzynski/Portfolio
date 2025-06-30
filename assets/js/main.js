@@ -54,7 +54,7 @@ function closeSidebar() {
       });      
     }
     
-    // Napraw resize - zamyka menu gdy wracamy do desktop
+    // Napraw resize
     window.addEventListener('resize', () => {
       if (window.innerWidth >= 992) closeSidebar();
     });
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         loop: true
       });
     });
-  }, 1500); // 3 sekundy opóźnienia
+  }, 1500); 
 });
 
   // AOS
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
     once: true,
     mirror: false
   });
-  AOS.refresh(); // ← Dodaj to
+  AOS.refresh(); 
 });
 
   // Glightbox
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Highlight active nav link on scroll
+  // Highlight
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll("#navbar .nav-link, #navbar .dropdown-item");
 
@@ -133,30 +133,34 @@ document.addEventListener('DOMContentLoaded', function() {
   const sections = [...document.querySelectorAll("section[id]")];
   let isScrolling = false;
   let wheelTimeout;
+ // Smooth Scroll
+function smoothScrollTo(targetY, duration = 800) {
+  const startY = window.scrollY;
+  const diff = targetY - startY;
+  let startTime = null;
 
-  function smoothScrollTo(targetY, duration = 50) {
-    const startY = window.scrollY;
-    const diff = targetY - startY;
-    let startTime = null;
-
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      const progress = timestamp - startTime;
-      const percent = Math.min(progress / duration, 1);
-      window.scrollTo(0, startY + diff * easeInOutQuad(percent));
-      if (progress < duration) {
-        requestAnimationFrame(step);
-      } else {
-        isScrolling = false;
-      }
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const progress = timestamp - startTime;
+    const percent = Math.min(progress / duration, 1);
+    const eased = easeInOutCubic(percent);
+    window.scrollTo(0, startY + diff * eased);
+    if (progress < duration) {
+      requestAnimationFrame(step);
+    } else {
+      isScrolling = false;
     }
-
-    function easeInOutQuad(t) {
-      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-    }
-
-    requestAnimationFrame(step);
   }
+
+  // Nowy easing:
+  function easeInOutCubic(t) {
+    return t < 0.5
+      ? 4 * t * t * t
+      : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  requestAnimationFrame(step);
+}
 
   function getCurrentSectionIndex() {
     const scrollY = window.scrollY + window.innerHeight / 2;
@@ -186,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
     scrollToSection(e.deltaY > 0 ? "down" : "up");
     wheelTimeout = setTimeout(() => {
       isScrolling = false;
-    }, 700);
+    }, 800);
   }, { passive: true });
 
   window.addEventListener("keydown", (e) => {

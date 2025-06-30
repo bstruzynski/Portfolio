@@ -2,7 +2,7 @@
 
 /* Reset and base styles */
 html, body {
-  scroll-snap-type: y mandatory;
+ /* scroll-snap-type: y proximity; */
   scroll-behavior: auto;
   overscroll-behavior-y: contain;
   height: 100%;
@@ -322,8 +322,8 @@ section {
   margin-left: 300px;
   padding-top: 60px;
   padding-bottom: 60px;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+ /* scroll-snap-align: start;
+  scroll-snap-stop: always; */
 }
   .resume-edu {
     position: relative;
@@ -354,8 +354,6 @@ section {
   margin-left: 300px;
   padding-top: 60px;
   padding-bottom: 60px;
-  
-  scroll-snap-stop: always;
 }
 .about .container-fluid,
 .about .row {
@@ -371,7 +369,6 @@ section {
   margin-left: 300px;
   padding-top: 60px;
   padding-bottom: 60px;
-  scroll-snap-stop: always;
 }
 }
 
@@ -502,12 +499,6 @@ h1, h2, h3, h4, h5, h6 {
   #main,
   section {
   margin-left: 0 !important;
-  }
-  html, body, main { 
-  scroll-snap-type: none !important; 
-  }
-  section { 
-  scroll-snap-align: none !important; 
   }
 }
 .profile .social-links {
